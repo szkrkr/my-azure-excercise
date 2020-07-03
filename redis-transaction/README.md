@@ -3,6 +3,14 @@
 https://docs.microsoft.com/ja-jp/learn/modules/work-with-mutable-and-partial-data-in-a-redis-cache/
 
 # GetStarted
-Please change the string for Redis on Program.cs after creation of resource.
-And
+1. Azure Cache for Redis　独自の接続文字列を取得する
+> REDIS_NAME=[name]
+REDIS_KEY=$(az redis list-keys \
+    --name "$REDIS_NAME" \
+    --resource-group [sandbox resource group name] \
+    --query primaryKey \
+    --output tsv)
+echo "$REDIS_KEY"@"$REDIS_NAME".redis.cache.windows.net:6380?ssl=true
+1. set connection string
+1. execute
 > dotnet run

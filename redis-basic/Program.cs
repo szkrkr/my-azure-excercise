@@ -2,12 +2,13 @@
 using Microsoft.Extensions.Configuration;
 using System.IO;
 using StackExchange.Redis;
+using System.Threading.Tasks;
 
-namespace redis_basic
+namespace SportsStatsTracker
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             var config = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
@@ -25,6 +26,18 @@ namespace redis_basic
 
                 string getValue = db.StringGet("test:key");
                 Console.WriteLine($"GET: {getValue}");
+
+                setValue = await db.StringSetAsync("test", "100");
+                Console.WriteLine($"SET: {setValue}");
+
+                getValue = await db.StringGetAsync("test");
+                Console.WriteLine($"GET: {getValue}");
+
+                var result = await db.ExecuteAsync("ping");
+                Console.WriteLine($"PING = {result.Type} : {result}");
+
+                result = await db.ExecuteAsync("flushdb");
+                Console.WriteLine($"FLUSHDB = {result.Type} : {result}");
             }
         }
     }

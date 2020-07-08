@@ -4,6 +4,11 @@ https://github.com/MicrosoftLearning/AZ-204JA-DevelopingSolutionsforMicrosoftAzu
 
 # Get Started
 * 
-
-
-
+> az group create --name rgKeyVaultAppSzk --location "Japan East"
+> az deployment group create \
+  --name DeployKeyVaultAppSzk  \
+  --resource-group rgKeyVaultAppSzk\
+  --template-file arm/template.json \
+  --parameters arm/parameters.json \
+  --verbose \
+  --no-wait 

@@ -16,18 +16,19 @@ namespace SportsStatsTracker
                 .Build();
 
             string connectionString = config["CacheConnection"];
-
+            Console.WriteLine(connectionString);
+            
             using (var cache = ConnectionMultiplexer.Connect(connectionString))
             {
                 IDatabase db = cache.GetDatabase();
 
-                bool setValue = db.StringSet("test:key", "some value");
-                Console.WriteLine($"SET: {setValue}");
+                // bool setValue = db.StringSet("test:key", "some value");
+                // Console.WriteLine($"SET: {setValue}");
 
                 string getValue = db.StringGet("test:key");
                 Console.WriteLine($"GET: {getValue}");
 
-                setValue = await db.StringSetAsync("test", "100");
+                var setValue = await db.StringSetAsync("test", "100");
                 Console.WriteLine($"SET: {setValue}");
 
                 getValue = await db.StringGetAsync("test");
@@ -38,6 +39,9 @@ namespace SportsStatsTracker
 
                 result = await db.ExecuteAsync("flushdb");
                 Console.WriteLine($"FLUSHDB = {result.Type} : {result}");
+
+                var val = await db.StringGetAsync("a");
+                Console.WriteLine($"a = {val}");
             }
         }
     }

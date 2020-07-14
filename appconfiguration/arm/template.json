@@ -1,0 +1,25 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "configurationStores_appconfigtestresourcesszk_name": {
+            "defaultValue": "appconfigszkdefault",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.AppConfiguration/configurationStores",
+            "apiVersion": "2019-11-01-preview",
+            "name": "[parameters('configurationStores_appconfigtestresourcesszk_name')]",
+            "location": "eastus",
+            "sku": {
+                "name": "free"
+            },
+            "properties": {
+                "encryption": {}
+            }
+        }
+    ]
+}

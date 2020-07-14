@@ -1,0 +1,27 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "sites_securefunc_szk_name": {
+            "value": "sites_securefunc_szk"
+        },
+        "vaults_securevault_szk_name": {
+            "value": "securevaultszk"
+        },
+        "storageAccounts_securestorszk_name": {
+            "value": "securestorszk"
+        },
+        "appservice_name": {
+            "value": "appservice_name_name"
+        },
+        "actionGroups_Application_Insights_Smart_Detection_name": {
+            "value": "Application Insights Smart Detection"
+        },
+        "smartdetectoralertrules_failure_anomalies___securefunc_szk_name": {
+            "value": "failure anomalies - securefunc-szk"
+        },
+        "components_securefunc_szk_externalid": {
+            "value": "/subscriptions/9b395059-d188-4641-b48a-796d3306edd7/resourceGroups/securefunction/providers/microsoft.insights/components/securefunc-szk"
+        }
+    }
+}
